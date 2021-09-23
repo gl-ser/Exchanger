@@ -16,7 +16,7 @@
 - сторонней библиотеки quazip;
 - класса статических методов конвертации времени [Calendar](https://github.com/gl-ser/Calendar).
 
-Состоит из 13 классов: TByteBuffer, TFile, TCheckSum, TBasicThread, TZIPThread, TNetSendThread, TNetReceiveThread, TReceivePartFileThread, TSendPartFileThread, TSendKvitThread, TBasicServerTCP, TSendFolderThread, TReceiveFilderServer.
+Состоит из 13 классов: TByteBuffer, TFile, TCheckSum, TBasicThread, TZIPThread, TNetSendThread, TNetReceiveThread, TReceivePartFileThread, TSendPartFileThread, TSendKvitThread, TBasicServerTCP, TSendFolderThread, TReceiveFolderServer.
 
 ---
 
@@ -750,6 +750,42 @@ void MessageServer(QString Str)
 
 #### Публичные методы
 
+11.3. _Start_ запускает TCP-сервер
+
+На вход подаются:
+
+  - номер TCP-порта.
+
+На выходе можно получить:
+
+  - true в случае успешного запуска
+
+Синтаксис:
+```cpp
+bool Start(int _PortTCP)
+```
+
+11.4. _Stop_ останавливает TCP-сервер
+
+Синтаксис:
+```cpp
+void Stop(void)
+```
+
+11.5. _SetTempCatalog_ устанавливает каталог временных файлов
+
+Синтаксис:
+```cpp
+void SetTempCatalog(QString _TempCatalog)
+```
+
+11.6. _GetPortTCP_ возвращает TCP-порт
+
+Синтаксис:
+```cpp
+int GetPortTCP(void)
+```
+
 ---
 
 ### 12. TSendFolderThread
@@ -759,11 +795,120 @@ void MessageServer(QString Str)
 
 #### Публичные методы
 
+12.1. _SetTempCatalog_ устанавливает каталог временных файлов
+
+Синтаксис:
+```cpp
+void SetTempCatalog(QString _TempCatalog)
+```
+
+12.2. _SendFolder_ передает внутрь потока данные, необходимые для отправки каталога по локальной сети
+
+На вход подаются:
+
+  - путь и имя каталога, отправляемого по локальной сети
+
+Синтаксис:
+```cpp
+void SendFolder(QString _CatPathName)
+```
+
 ---
 
-### 13. TReceiveFilderServer
+### 13. TReceiveFolderServer
 Сервер приема каталога, обработки и отправки квитанции
 
 Использует функционал следующих классов: TCheckSum, TFile, TZIPThread, TSendKvitThread, TReceivePartFileThread
 
+#### Публичный тип
+```cpp
+//Тип описывает атрибуты расширенного сетевого абонента
+struct AbonentExt
+{
+  AbonentExt() : FolderPathName("") {}
+  TNetSendThread::TAbonent Base;  //Базовые атрибуты абонента
+  QString FolderPathName;         //Путь и имя приемной папки абонента
+};
+typedef struct AbonentExt TAbonentExt;
+```
+
+#### Публичные сигналы
+
+13.1. _GotKvitError_ синал генерируется при получении по сети квитанции об ошибке передачи каталога
+
+Возвращает:
+
+   - сетевой абонент, от которого пришла квитанция;
+   - транспортное имя файла;
+   - код ошибки.
+
+Коды ошибок:
+   - 1 - ошибка распаковки ZIP-архива;
+   - 2 - тайм-аут приема файла;
+   - 3 - неверная контрольная сумма;
+   - 4 - одна или несколько частей файла были получены с ошибкой
+
+Синтаксис:
+```cpp
+void GotKvitError(TReceiveFolderServer::TAbonentExt Abonent, QString FileName, int Err)
+```
+
+13.2. _GotKvitSuccess_ синал генерируется при получении по сети квитанции об успешной передаче каталога
+
+Возвращает:
+
+   - сетевой абонент, от которого пришла квитанция;
+   - транспортное имя файла
+
+Синтаксис:
+```cpp
+void GotKvitSuccess(TReceiveFolderServer::TAbonentExt Abonent, QString FileName)
+```
+
 #### Публичные методы
+13.3. _Start_ запускает TCP-сервер
+
+На вход подаются:
+
+  - номер TCP-порта.
+
+На выходе можно получить:
+
+  - true в случае успешного запуска
+
+Синтаксис:
+```cpp
+bool Start(int _PortTCP)
+```
+
+13.4. _Stop_ останавливает TCP-сервер
+
+Синтаксис:
+```cpp
+void Stop(void)
+```
+
+13.5. _AddAbonent_ добавляет нового сетевого абонента в массив
+
+На вход подаются:
+
+  - имя абонента;
+  - IPv4-адрес абонента;
+  - TCP-порт;
+  - путь и имя приемной папки абонента
+
+Синтаксис:
+```cpp
+void AddAbonent(QString _Name, QString _Address, int _PortTCP, QString _FolderPathName)
+```
+
+13.6. _SetTimeOut_ задает тайм-аут приема файла
+
+На вход подаются:
+
+  - временная задержка [мин];
+
+Синтаксис:
+```cpp
+void SetTimeOut(double Value)
+```
