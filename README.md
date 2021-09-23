@@ -568,6 +568,36 @@ int GetAnswerPortTCP(void)
 
 Использует функционал класса TByteBuffer
 
+#### Публичные методы
+
+7.1. _CheckStart_ засекает время начала работы потока, очищает атрибут ErrorNote
+
+Синтаксис:
+```cpp
+void CheckStart(void)
+```
+
+7.2. _SetSocket_ устанавливает сокет, по которому будут приходить данные из локальной сети
+
+Синтаксис:
+```cpp
+void SetSocket(QTcpSocket* _Socket)
+```
+
+7.3. _SetTempCatalog_ устанавливает каталог временных файлов
+
+Синтаксис:
+```cpp
+void SetTempCatalog(QString _TempCatalog)
+```
+
+7.4. _GetAddress_ возвращает IPv4-адрес TCP-клиента
+
+Синтаксис:
+```cpp
+QString GetAddress(void)
+```
+
 ---
 
 ### 8. TReceivePartFileThread
@@ -575,15 +605,75 @@ int GetAnswerPortTCP(void)
 
 Использует функционал класса TFile
 
+#### Публичные типы
+```cpp
+//Тип описывает заголовок получаемого файла
+struct HeaderFile
+{
+  HeaderFile() : IsEmpty(true), KeyWord("<MKSOD_FILE>"), GUID(""), MD5(""), FileSize(0LL),
+                 StartIndex(0LL), IndexPart(0), CountParts(0), AnswerPortTCP(0), FilePathName("") {}
+  bool IsEmpty;          //Если пустой, тогда true
+  QString KeyWord;       //Ключевое слово (12 байт)
+  QString GUID;          //Транспортное имя файла (38 байт)
+  QString MD5;           //Контрольная сумма файла (32 байта)
+  long long FileSize;    //Длина файла (8 байт)
+  long long StartIndex;  //Индекс начала части файла (8 байт)
+  int IndexPart;         //Порядковый номер части файла (4 байта)
+  int CountParts;        //Количество частей файла (4 байта)
+  int AnswerPortTCP;     //Номер порта для ответа (4 байта)
+  QString FilePathName;  //Путь и имя файла
+
+  //Инициализирующий метод
+  void Empty(void);
+};
+typedef struct HeaderFile THeaderFile;
+
+//Тип описывает заголовок получаемой квитанции
+struct HeaderKvit
+{
+  HeaderKvit() : IsEmpty(true), KeyWord("<MKSOD_KVIT>"), GUID(""), Type(0), Err(0), AnswerPortTCP(0) {}
+  bool IsEmpty;       //Если пустой, тогда true
+  QString KeyWord;    //Ключевое слово (12 байт)
+  QString GUID;       //Транспортное имя файла (38 байт)
+  int Type;           //Тип квитанции (4 байта, 1 - успешно, 0 - неуспешно)
+  int Err;            //Код ошибки (4 байта)
+  int AnswerPortTCP;  //Номер TCP-порта для ответа (4 байта)
+
+  //Инициализирующий метод
+  void Empty(void);
+};
+typedef struct HeaderKvit THeaderKvit;
+```
+
+#### Публичные методы
+
+8.1. _GetFileHeader_ возвращает заголовок получаемого файла
+
+Синтаксис:
+```cpp
+THeaderFile GetFileHeader(void)
+```
+
+8.2. _GetKvitHeader_ возвращает заголовок получаемой квитанции
+
+Синтаксис:
+```cpp
+THeaderKvit GetKvitHeader(void)
+```
+
 ---
 
 ### 9. TSendPartFileThread
 Поток отправки части файла по локальной сети
 
+#### Публичные методы
+
 ---
 
 ### 10. TSendKvitThread
 Поток отправки квитанции
+
+#### Публичные методы
 
 ---
 
@@ -592,6 +682,8 @@ int GetAnswerPortTCP(void)
 
 Использует функционал класса TNetReceiveThread
 
+#### Публичные методы
+
 ---
 
 ### 12. TSendFolderThread
@@ -599,9 +691,13 @@ int GetAnswerPortTCP(void)
 
 Использует функционал следующих классов: TSendPartFileThread, TCheckSum, TFile
 
+#### Публичные методы
+
 ---
 
 ### 13. TReceiveFilderServer
 Сервер приема каталога, обработки и отправки квитанции
 
 Использует функционал следующих классов: TCheckSum, TFile, TZIPThread, TSendKvitThread, TReceivePartFileThread
+
+#### Публичные методы
