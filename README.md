@@ -460,10 +460,106 @@ QString GetErrorNote(void)
 
 Использует функционал сторонней библиотеки quazip
 
+#### Публичные методы
+5.1. _SetPaths_ устанавливает для сжатия\распаковки следующие атрибуты:
+
+  - путь и имя каталога;
+  - путь и имя ZIP-файла
+
+Синтаксис:
+```cpp
+void SetPaths(QString _DirPathName, QString _ZIPFilePathName)
+```
+
+5.2. _CompressDir_ ставит задачу сжатия каталога в ZIP-архив
+
+Синтаксис:
+```cpp
+void CompressDir(void)
+```
+
+5.3. _ExtractDir_ ставит задачу распаковки ZIP-архива в каталог
+
+Синтаксис:
+```cpp
+void ExtractDir(void)
+```
+
+5.4. _GetDirPathName_ возвращает путь и имя каталога
+
+Синтаксис:
+```cpp
+QString GetDirPathName(void)
+```
+
+5.5. _GetZIPFilePathName_ возвращает путь и имя ZIP-файла
+
+Синтаксис:
+```cpp
+QString GetZIPFilePathName(void)
+```
+
 ---
 
 ### 6. TNetSendThread
 Поток отправки данных по локальной сети
+
+#### Публичный тип
+```cpp
+//Тип описывает атрибуты сетевого абонента
+struct Abonent
+{
+  Abonent() : Name(""), Address(""), PortTCP(0) {}
+  QString Name;     //Имя абонента
+  QString Address;  //IPv4-адрес абонента
+  int PortTCP;      //TCP-порт абонента
+};
+typedef struct Abonent TAbonent;
+```
+
+#### Публичные методы
+6.1. _SetAbonent_ устанавливает атрибуты сетевого абонента:
+
+  - имя;
+  - IPv4-адрес;
+  - TCP-порт
+
+Синтаксис:
+```cpp
+void SetAbonent(QString _Name, QString _Address, int _PortTCP)
+```
+
+6.2. _GetAbonent_ возвращает атрибуты сетевого абонента
+
+Синтаксис:
+```cpp
+TAbonent GetAbonent(void)
+```
+
+6.3. _IsNotEmptyAbonent_
+
+Возвращает true, если атрибуты абонента заполнены (отличны от значений по умолчанию)
+
+Возвращает false, если атрибуты абонента соответствуют значениям по умолчанию
+
+Синтаксис:
+```cpp
+bool IsNotEmptyAbonent(void)
+```
+
+6.4. _SetAnswerPortTCP_ устанавливает номер TCP-порта для ответа (квитирования)
+
+Синтаксис:
+```cpp
+void SetAnswerPortTCP(int _AnswerPortTCP)
+```
+
+6.5. _GetAnswerPortTCP_ возвращает номер TCP-порта для ответа (квитирования)
+
+Синтаксис:
+```cpp
+int GetAnswerPortTCP(void)
+```
 
 ---
 
