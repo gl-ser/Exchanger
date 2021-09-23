@@ -610,8 +610,9 @@ QString GetAddress(void)
 //Тип описывает заголовок получаемого файла
 struct HeaderFile
 {
-  HeaderFile() : IsEmpty(true), KeyWord("<MKSOD_FILE>"), GUID(""), MD5(""), FileSize(0LL),
-                 StartIndex(0LL), IndexPart(0), CountParts(0), AnswerPortTCP(0), FilePathName("") {}
+  HeaderFile() : IsEmpty(true), KeyWord("<MKSOD_FILE>"), GUID(""), MD5(""), 
+                 FileSize(0LL), StartIndex(0LL), IndexPart(0), CountParts(0), 
+                 AnswerPortTCP(0), FilePathName("") {}
   bool IsEmpty;          //Если пустой, тогда true
   QString KeyWord;       //Ключевое слово (12 байт)
   QString GUID;          //Транспортное имя файла (38 байт)
@@ -628,10 +629,12 @@ struct HeaderFile
 };
 typedef struct HeaderFile THeaderFile;
 
+
 //Тип описывает заголовок получаемой квитанции
 struct HeaderKvit
 {
-  HeaderKvit() : IsEmpty(true), KeyWord("<MKSOD_KVIT>"), GUID(""), Type(0), Err(0), AnswerPortTCP(0) {}
+  HeaderKvit() : IsEmpty(true), KeyWord("<MKSOD_KVIT>"), GUID(""), Type(0), 
+                 Err(0), AnswerPortTCP(0) {}
   bool IsEmpty;       //Если пустой, тогда true
   QString KeyWord;    //Ключевое слово (12 байт)
   QString GUID;       //Транспортное имя файла (38 байт)
@@ -666,14 +669,53 @@ THeaderKvit GetKvitHeader(void)
 ### 9. TSendPartFileThread
 Поток отправки части файла по локальной сети
 
-#### Публичные методы
+#### Публичный метод
+
+9.1. _SendPartFile_ передает внутрь потока данные, необходимые для отправки области (части) файла
+
+На вход подаются:
+
+  - путь и имя файла;
+  - GUID являющийся временным (транспортным) именем файла (38 символов);
+  - контрольная сумма файла (32 символа);
+  - размер файла;
+  - позиция в файле, с которой начинается отправляемая область (часть);
+  - размер передаваемой области (части) файла;
+  - порядковый номер передаваемой области (части) файла;
+  - количество областей (частей) файла
+
+Синтаксис:
+```cpp
+void SendPartFile(QString _FilePathName, QString _GUID, QString _MD5, long long _FileSize, 
+                  long long _StartIndex, long long _BufferSize, int _IndexPart, int _CountParts)
+```
 
 ---
 
 ### 10. TSendKvitThread
 Поток отправки квитанции
 
-#### Публичные методы
+#### Публичный метод
+
+10.1. _SendKvit_ передает внутрь потока данные, необходимые для отправки квитанции
+
+На вход подаются:
+
+  - GUID являющийся временным (транспортным) именем файла (38 символов);
+  - тип квитанции (1 - успешно, 0 - неуспешно);
+  - код ошибки.
+
+Коды ошибок:
+
+  - 1 - ошибка распаковки ZIP-архива;
+  - 2 - тайм-аут приема файла;
+  - 3 - неверная контрольная сумма;
+  - 4 - одна или несколько частей файла были получены с ошибкой
+
+Синтаксис:
+```cpp
+void SendKvit(QString _GUID, int _Type, int _Err)
+```
 
 ---
 
@@ -681,6 +723,30 @@ THeaderKvit GetKvitHeader(void)
 Базовый сервер TCP
 
 Использует функционал класса TNetReceiveThread
+
+#### Публичные сигналы
+
+11.1. _ErrorServer_ сигнал генерируется в случае возникновения ошибки
+
+Возвращает:
+
+  - описание ошибки
+
+Синтаксис:
+```cpp
+void ErrorServer(QString Str)
+```
+
+11.2. _MessageServer_ сигнал генерируется при необходимости передачи словесного сообщения вызывающей программе
+
+Возвращает:
+
+   - текст сообщения
+
+Синтаксис:
+```cpp
+void MessageServer(QString Str)
+```
 
 #### Публичные методы
 
