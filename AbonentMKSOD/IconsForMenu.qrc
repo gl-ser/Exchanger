@@ -1,0 +1,21 @@
+﻿<RCC>
+    <qresource prefix="/1">
+        <file>Picture/Exit.png</file>
+        <file>Picture/Tools.png</file>
+        <file>Picture/ReLoad.png</file>
+        <file>Picture/About.png</file>
+        <file>Picture/Report.png</file>
+        <file>Picture/Pic1.ico</file>
+        <file>Picture/Pic4.ico</file>
+        <file>Picture/ToolButton.png</file>
+        <file>Picture/Save.png</file>
+        <file>Picture/Clear.png</file>
+        <file>Picture/OKGreen.png</file>
+        <file>Picture/OKRed.png</file>
+        <file>Picture/Manager.png</file>
+        <file>Picture/Find.png</file>
+        <file>Picture/AbonAdd.png</file>
+        <file>Picture/AbonDel.png</file>
+        <file>Picture/AbonEdit.png</file>
+    </qresource>
+</RCC>

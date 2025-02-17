@@ -1,13 +1,12 @@
 QT -= core gui
 
-TARGET = zlib
+TARGET = ZLib
 TEMPLATE = lib
 
 #DEFINES += UNTITLED1_LIBRARY
+#DEFINES += QT_DEPRECATED_WARNINGS
 
-DEFINES += QT_DEPRECATED_WARNINGS
-
-DESTDIR = $$PWD/../App  #Размещение исполняемого файла
+DESTDIR = $$PWD/../Application  #Размещение исполняемого файла
 
 CONFIG += link_pkgconfig plugin no_plugin_name_prefix  #Убрать префиксы и постфиксы в имени библиотеки (опции компилятора)
 

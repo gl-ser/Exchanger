@@ -1,19 +1,19 @@
 QT += core widgets network sql
 
-TARGET = quazip
+TARGET = QuaZIP
 TEMPLATE = lib
 
 DEFINES += QUAZIP_BUILD #QUAZIP_STATIC
 DEFINES += NOMINMAX
 DEFINES += NOCRYPT USE_FILE32API
 
-DESTDIR = $$PWD/../App  #Размещение исполняемого файла
+DESTDIR = $$PWD/../Application  #Размещение исполняемого файла
 
 CONFIG += link_pkgconfig plugin no_plugin_name_prefix  #Убрать префиксы и постфиксы в имени библиотеки (опции компилятора)
 
 unix : CONFIG += static
 
-LIBS += -L"$$PWD/../App" -lzlib  #Статическое подключение библиотеки zlib
+LIBS += -L"$$PWD/../Application" -lZLib  #Статическое подключение библиотеки ZLib
 
 SOURCES += \
     JlCompress.cpp \

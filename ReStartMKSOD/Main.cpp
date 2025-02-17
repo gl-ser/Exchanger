@@ -1,13 +1,9 @@
 //----------------------------------------------------------------------------//
 //       *** МНОГОПОТОЧНАЯ КРОССПЛАТФОРМЕННАЯ СИСТЕМА ОБМЕНА ДАННЫМИ ***      //
 //                                                                            //
-// Файл Tuner.h                                                               //
+// Файл Main.cpp                                                              //
 //                                                                            //
-// Здесь задается уровень сжатия данных при помещении в ZIP-архив             //
-// Задаваемое значение может меняться от 0 до 9                               //
-// 0 - сжатие выключено                                                       //
-// 9 - высокий уровень сжатия                                                 //
-// Разработчик библиотеки QuaZIP по умолчанию устанавливает 6 уровень сжатия  //
+//                   *** УТИЛИТА ПЕРЕЗАГРУЗКИ ПРИЛОЖЕНИЯ ***                  //
 //                                                                            //
 // Автор ГЛУЩЕНКО Сергей                                                      //
 //                                                                            //
@@ -15,9 +11,25 @@
 //----------------------------------------------------------------------------//
 
 
-#ifndef TUNER_H
-#define TUNER_H
+#include <QApplication>
+#include "MainWin.h"
 
-#define LEVEL_COMPRESSION 0  //Для системы обмена данными сжатие не использую
 
+int main(int argc, char *argv[])
+{
+QApplication App(argc, argv);
+TMainWin w;
+
+#ifndef __unix__
+QStringList paths;
+  paths = QCoreApplication::libraryPaths();
+  paths.append(".");
+  //paths.append("imageformats");
+  paths.append("platforms");
+  //paths.append("sqldrivers");
+  QCoreApplication::setLibraryPaths(paths);
 #endif
+
+  w.show();
+  return App.exec();
+}

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>TMainWin</class>
+ <widget class="QMainWindow" name="TMainWin">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>475</width>
+    <height>113</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="focusPolicy">
+   <enum>Qt::NoFocus</enum>
+  </property>
+  <property name="windowTitle">
+   <string>Абонент МКСОД</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="IconsForMenu.qrc">
+    <normaloff>:/1/Picture/Pic4.ico</normaloff>:/1/Picture/Pic4.ico</iconset>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QGridLayout" name="gridLayout"/>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>475</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>Приложение</string>
+    </property>
+    <addaction name="action"/>
+    <addaction name="action_3"/>
+    <addaction name="action_4"/>
+   </widget>
+   <widget class="QMenu" name="menu_8">
+    <property name="title">
+     <string>Справка</string>
+    </property>
+    <addaction name="action_14"/>
+   </widget>
+   <widget class="QMenu" name="menu_2">
+    <property name="title">
+     <string>Протокол</string>
+    </property>
+    <addaction name="action_2"/>
+   </widget>
+   <widget class="QMenu" name="menu_3">
+    <property name="title">
+     <string>Абоненты</string>
+    </property>
+    <addaction name="action_5"/>
+   </widget>
+   <addaction name="menu"/>
+   <addaction name="menu_3"/>
+   <addaction name="menu_2"/>
+   <addaction name="menu_8"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>30</width>
+     <height>30</height>
+    </size>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="action"/>
+   <addaction name="action_3"/>
+   <addaction name="separator"/>
+   <addaction name="action_5"/>
+   <addaction name="separator"/>
+   <addaction name="action_2"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBarMain"/>
+  <action name="action">
+   <property name="icon">
+    <iconset resource="IconsForMenu.qrc">
+     <normaloff>:/1/Picture/Tools.png</normaloff>:/1/Picture/Tools.png</iconset>
+   </property>
+   <property name="text">
+    <string>Параметры приложения</string>
+   </property>
+  </action>
+  <action name="action_3">
+   <property name="icon">
+    <iconset resource="IconsForMenu.qrc">
+     <normaloff>:/1/Picture/ReLoad.png</normaloff>:/1/Picture/ReLoad.png</iconset>
+   </property>
+   <property name="text">
+    <string>Перезагрузить приложение</string>
+   </property>
+  </action>
+  <action name="action_4">
+   <property name="icon">
+    <iconset resource="IconsForMenu.qrc">
+     <normaloff>:/1/Picture/Exit.png</normaloff>:/1/Picture/Exit.png</iconset>
+   </property>
+   <property name="text">
+    <string>Выход</string>
+   </property>
+  </action>
+  <action name="action_14">
+   <property name="icon">
+    <iconset resource="IconsForMenu.qrc">
+     <normaloff>:/1/Picture/About.png</normaloff>:/1/Picture/About.png</iconset>
+   </property>
+   <property name="text">
+    <string>О программе</string>
+   </property>
+  </action>
+  <action name="action_2">
+   <property name="icon">
+    <iconset resource="IconsForMenu.qrc">
+     <normaloff>:/1/Picture/Report.png</normaloff>:/1/Picture/Report.png</iconset>
+   </property>
+   <property name="text">
+    <string>Открыть протокол</string>
+   </property>
+  </action>
+  <action name="action_5">
+   <property name="icon">
+    <iconset resource="IconsForMenu.qrc">
+     <normaloff>:/1/Picture/Manager.png</normaloff>:/1/Picture/Manager.png</iconset>
+   </property>
+   <property name="text">
+    <string>Управление списком абонентов</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="IconsForMenu.qrc"/>
+ </resources>
+ <connections/>
+</ui>

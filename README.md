@@ -12,15 +12,17 @@
 Использует функционал:
 
 - Qt 5;
-- сторонней библиотеки zlib;
-- сторонней библиотеки quazip;
+- сторонней библиотеки ZLib;
+- сторонней библиотеки QuaZIP;
 - класса статических методов конвертации времени [Calendar](https://github.com/gl-ser/Calendar).
 
 Состоит из 13 классов: TByteBuffer, TFile, TCheckSum, TBasicThread, TZIPThread, TNetSendThread, TNetReceiveThread, TReceivePartFileThread, TSendPartFileThread, TSendKvitThread, TBasicServerTCP, TSendFolderThread, TReceiveFolderServer.
 
+Располагается в подкаталоге EngineMKSOD
+
 ---
 
-В подкаталоге HowToUse находится тестовая программа, демонстрирующая работу с МКСОД
+В подкаталоге AbonentMKSOD находится приложение, демонстрирующее работу движка МКСОД
 
 Использует функционал:
 
@@ -32,16 +34,24 @@
 
 ---
 
-В подкаталоге QuaZIP находится сторонняя объектно-ориентированная библиотека ZIP-архиватор quazip
+В подкаталоге QuaZIP находится сторонняя объектно-ориентированная библиотека ZIP-архиватор QuaZIP
 
 Использует функционал:
 
 - Qt 5;
-- сторонней библиотеки zlib.
+- сторонней библиотеки ZLib.
 
 ---
 
-В подкаталоге ZLib находится сторонняя библиотека ZIP-архиватор zlib
+В подкаталоге ReStartMKSOD находится утилита для приложения AbonentMKSOD
+
+Использует функционал:
+
+- Qt 5.
+
+---
+
+В подкаталоге ZLib находится сторонняя библиотека ZIP-архиватор ZLib
 
 ---
 
