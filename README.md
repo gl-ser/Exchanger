@@ -18,7 +18,7 @@
 
 Состоит из 13 классов: TByteBuffer, TFile, TCheckSum, TBasicThread, TZIPThread, TNetSendThread, TNetReceiveThread, TReceivePartFileThread, TSendPartFileThread, TSendKvitThread, TBasicServerTCP, TSendFolderThread, TReceiveFolderServer.
 
-Располагается в подкаталоге EngineMKSOD
+Располагается в подкаталоге [EngineMKSOD](https://github.com/gl-ser/Exchanger/tree/main/EngineMKSOD)
 
 ---
 
@@ -27,10 +27,10 @@
 Использует функционал:
 
 - Qt 5;
-- сторонней библиотеки zlib;
-- сторонней библиотеки quazip;
+- сторонней библиотеки ZLib;
+- сторонней библиотеки QuaZIP;
 - класса статических методов конвертации времени [Calendar](https://github.com/gl-ser/Calendar).
-- МКСОД [Exchanger](https://github.com/gl-ser/Exchanger).
+- МКСОД [EngineMKSOD](https://github.com/gl-ser/Exchanger/tree/main/EngineMKSOD).
 
 ---
 
