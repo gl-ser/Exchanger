@@ -12,8 +12,8 @@
 Использует функционал:
 
 - Qt 5;
-- сторонней библиотеки ZLib;
-- сторонней библиотеки QuaZIP;
+- сторонней библиотеки [ZLib](https://github.com/gl-ser/Exchanger/tree/main/ZLib);
+- сторонней библиотеки [QuaZIP](https://github.com/gl-ser/Exchanger/tree/main/QuaZIP);
 - класса статических методов конвертации времени [Calendar](https://github.com/gl-ser/Calendar).
 
 Состоит из 13 классов: TByteBuffer, TFile, TCheckSum, TBasicThread, TZIPThread, TNetSendThread, TNetReceiveThread, TReceivePartFileThread, TSendPartFileThread, TSendKvitThread, TBasicServerTCP, TSendFolderThread, TReceiveFolderServer.
@@ -22,28 +22,28 @@
 
 ---
 
-В подкаталоге AbonentMKSOD находится приложение, демонстрирующее работу движка МКСОД
+В подкаталоге [AbonentMKSOD](https://github.com/gl-ser/Exchanger/tree/main/AbonentMKSOD) находится приложение, демонстрирующее работу движка МКСОД
 
 Использует функционал:
 
 - Qt 5;
-- сторонней библиотеки ZLib;
-- сторонней библиотеки QuaZIP;
+- сторонней библиотеки [ZLib](https://github.com/gl-ser/Exchanger/tree/main/ZLib);
+- сторонней библиотеки [QuaZIP](https://github.com/gl-ser/Exchanger/tree/main/QuaZIP);
 - класса статических методов конвертации времени [Calendar](https://github.com/gl-ser/Calendar).
 - МКСОД [EngineMKSOD](https://github.com/gl-ser/Exchanger/tree/main/EngineMKSOD).
 
 ---
 
-В подкаталоге QuaZIP находится сторонняя объектно-ориентированная библиотека ZIP-архиватор QuaZIP
+В подкаталоге [QuaZIP](https://github.com/gl-ser/Exchanger/tree/main/QuaZIP) находится сторонняя объектно-ориентированная библиотека ZIP-архиватор QuaZIP
 
 Использует функционал:
 
 - Qt 5;
-- сторонней библиотеки ZLib.
+- сторонней библиотеки [ZLib](https://github.com/gl-ser/Exchanger/tree/main/ZLib).
 
 ---
 
-В подкаталоге ReStartMKSOD находится утилита для приложения AbonentMKSOD
+В подкаталоге [ReStartMKSOD](https://github.com/gl-ser/Exchanger/tree/main/ReStartMKSOD) находится утилита для приложения [AbonentMKSOD](https://github.com/gl-ser/Exchanger/tree/main/AbonentMKSOD)
 
 Использует функционал:
 
@@ -51,7 +51,7 @@
 
 ---
 
-В подкаталоге ZLib находится сторонняя библиотека ZIP-архиватор ZLib
+В подкаталоге [ZLib](https://github.com/gl-ser/Exchanger/tree/main/ZLib) находится сторонняя библиотека ZIP-архиватор ZLib
 
 ---
 
